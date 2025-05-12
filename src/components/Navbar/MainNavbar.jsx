@@ -1,13 +1,10 @@
 import { FaInfoCircle, FaBars, FaExpand, FaUser, FaDesktop } from 'react-icons/fa';
 import { useState } from 'react';
+import { useSidebar } from '../../context/sidebarContext'; // Use this context for sidebar toggle
 
 const MainNavbar = () => {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const { toggleSidebar } = useSidebar(); // Get toggle function from context
   const [isFullscreen, setIsFullscreen] = useState(false);
-
-  const toggleSidebar = () => {
-    setIsSidebarOpen(!isSidebarOpen); // Toggle sidebar visibility
-  };
 
   const toggleFullscreen = () => {
     if (!isFullscreen) {
@@ -15,18 +12,18 @@ const MainNavbar = () => {
     } else {
       document.exitFullscreen();
     }
-    setIsFullscreen(!isFullscreen); // Toggle fullscreen mode
+    setIsFullscreen(!isFullscreen);
   };
 
   return (
     <div className="flex justify-between items-center p-4 bg-white border-b border-gray-200 shadow-sm">
       {/* Left section */}
       <div className="flex gap-6 items-center text-gray-700 font-medium">
-        {/* Disclose (Toggle Sidebar) */}
+        {/* Toggle Sidebar */}
         <div onClick={toggleSidebar} className="cursor-pointer">
           <FaBars className="text-gray-700 text-xl" />
         </div>
-        {/* Fullscreen (Toggle Fullscreen) */}
+        {/* Toggle Fullscreen */}
         <div onClick={toggleFullscreen} className="cursor-pointer">
           <FaExpand className="text-gray-700 text-xl" />
         </div>
@@ -38,13 +35,13 @@ const MainNavbar = () => {
           <FaInfoCircle className="text-blue-500 text-lg" />
           <div>Help</div>
         </div>
-        <div>          
+        <div>
           <FaDesktop className="text-blue-500 text-lg" />
         </div>
         <div>HRMS</div>
         <div>Welcome</div>
 
-        {/* Profile Section with Icon and Name */}
+        {/* Profile */}
         <div className="text-right flex items-center gap-2">
           <div className="font-semibold">Vishal</div>
           <FaUser className="text-gray-700 text-lg" />

@@ -1,10 +1,13 @@
 import MainNavbar from '../components/Navbar/MainNavbar';
-import PrimarySideBar from '../components/Sidebar/PrimarySideBar';
+import PrimarySideBar from './Sidebar/PrimarySideBar';
+import { useSidebar } from '../context/sidebarContext'; // Import context
 
 const MainLayout = ({ children }) => {
+  const { isSidebarOpen } = useSidebar(); // Access sidebar state
+
   return (
     <div className="flex h-screen overflow-hidden">
-      <PrimarySideBar />
+      {isSidebarOpen && <PrimarySideBar />}
       <div className="flex flex-col flex-1">
         <MainNavbar />
         <main className="p-4 overflow-auto">{children}</main>

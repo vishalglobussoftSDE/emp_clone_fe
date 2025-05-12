@@ -1,34 +1,46 @@
 import { FaHome, FaBell, FaSyncAlt } from 'react-icons/fa';
+import { useSidebar } from '../../context/sidebarContext.jsx';
 
-const PrimarySideBar = ({ collapsed }) => {
+const PrimarySideBar = () => {
+  const { isSidebarOpen } = useSidebar();
+
   return (
     <div
-      className={`h-screen bg-white border-r border-gray-300 shadow-sm transition-all duration-300 ${
-        collapsed ? 'w-[70px]' : 'w-[200px]'
-      }`}
+      className={`${
+        isSidebarOpen ? 'w-[200px]' : 'w-[60px]'
+      } h-screen bg-white border-r border-gray-300 shadow-sm transition-all duration-300`}
     >
-      {/* Logo Section - show only if not collapsed */}
-      {!collapsed && (
+      {/* Logo Section */}
+      {isSidebarOpen && (
         <div className="flex justify-center items-center p-4 border-b border-gray-200">
-          <img src="/empmonitorlogo.png" alt="EMP Monitor Logo" className="h-12" />
+          <img src="/empmonitorlogo.png" alt="EMP Monitor Logo" className="h-6" />
         </div>
       )}
 
       {/* Navigation Items */}
       <div className="flex flex-col gap-6 p-4 text-gray-700">
+        {/* Dashboard */}
         <div className="flex items-center gap-3 cursor-pointer hover:text-blue-600">
-          <div className="text-xl"><FaHome /></div>
-          {!collapsed && <div className="text-base font-medium">Dashboard</div>}
+          <div className="text-xl">
+            <FaHome />
+          </div>
+          {isSidebarOpen && <div className="text-base font-medium">Dashboard</div>}
         </div>
 
+        {/* Notifications */}
         <div className="flex items-center gap-3 cursor-pointer hover:text-blue-600">
-          <div className="text-xl"><FaBell /></div>
-          {!collapsed && <div className="text-base font-medium">Notifications</div>}
+          <div className="text-xl">
+            <FaBell />
+          </div>
+          {isSidebarOpen && <div className="text-base font-medium">Notifications</div>}
         </div>
 
+        {/* Time Claim */}
         <div className="flex items-center gap-3 cursor-pointer hover:text-blue-600">
-          <div className="text-xl"><FaSyncAlt /></div>
-          {!collapsed && <div className="text-base font-medium">Time Claim</div>}
+          <div className="text-xl">
+            <FaSyncAlt />
+          </div>
+          {isSidebarOpen && <div className="text-base font-medium">Time Claim</div>}
         </div>
       </div>
     </div>
