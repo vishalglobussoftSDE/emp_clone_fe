@@ -1,4 +1,5 @@
 import { FaHome, FaBell, FaSyncAlt } from 'react-icons/fa';
+import { Link } from 'react-router-dom'; // Importing Link for routing
 import { useSidebar } from '../../context/sidebarContext.jsx';
 
 const PrimarySideBar = () => {
@@ -18,28 +19,28 @@ const PrimarySideBar = () => {
       {/* Navigation Items */}
       <div className="flex flex-col gap-6 p-4 text-gray-700">
         {/* Dashboard */}
-        <div className="flex items-center gap-3 cursor-pointer hover:text-blue-600">
+        <Link to="/" className="flex items-center gap-3 cursor-pointer hover:text-blue-600">
           <div className="text-xl">
             <FaHome />
           </div>
           {isSidebarOpen && <div className="text-base font-medium">Dashboard</div>}
-        </div>
+        </Link>
 
         {/* Notifications */}
-        <div className="flex items-center gap-3 cursor-pointer hover:text-blue-600">
+        <Link to="/notifications" className="flex items-center gap-3 cursor-pointer hover:text-blue-600">
           <div className="text-xl">
             <FaBell />
           </div>
           {isSidebarOpen && <div className="text-base font-medium">Notifications</div>}
-        </div>
+        </Link>
 
         {/* Time Claim */}
-        <div className="flex items-center gap-3 cursor-pointer hover:text-blue-600">
+        <Link to="/timeclaim" className="flex items-center gap-3 cursor-pointer hover:text-blue-600">
           <div className="text-xl">
             <FaSyncAlt />
           </div>
           {isSidebarOpen && <div className="text-base font-medium">Time Claim</div>}
-        </div>
+        </Link>
       </div>
     </div>
   );
