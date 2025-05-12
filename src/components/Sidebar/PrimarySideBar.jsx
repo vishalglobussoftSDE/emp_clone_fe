@@ -6,16 +6,14 @@ const PrimarySideBar = () => {
 
   return (
     <div
-      className={`${
-        isSidebarOpen ? 'w-[200px]' : 'w-[60px]'
-      } h-screen bg-white border-r border-gray-300 shadow-sm transition-all duration-300`}
+      className={`w-[200px] h-screen bg-white border-r border-gray-300 shadow-sm transition-all duration-300`}
     >
-      {/* Logo Section */}
-      {isSidebarOpen && (
-        <div className="flex justify-center items-center p-4 border-b border-gray-200">
+      {/* Logo Section - hidden when collapsed */}
+      <div className="flex justify-center items-center p-4 border-b border-gray-200 h-[60px]">
+        {isSidebarOpen && (
           <img src="/empmonitorlogo.png" alt="EMP Monitor Logo" className="h-6" />
-        </div>
-      )}
+        )}
+      </div>
 
       {/* Navigation Items */}
       <div className="flex flex-col gap-6 p-4 text-gray-700">
