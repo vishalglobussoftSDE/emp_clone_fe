@@ -1,7 +1,6 @@
 import { FaInfoCircle, FaBars, FaExpand, FaUser, FaDesktop } from 'react-icons/fa';
 import { useState } from 'react';
 import { useSidebar } from '../../context/sidebarContext'; // Use this context for sidebar toggle
-import { redirect } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 
 
@@ -29,7 +28,7 @@ const MainNavbar = () => {
       <div className="flex gap-6 items-center text-gray-700 font-medium">
         <div onClick={toggleSidebar} className="cursor-pointer">
           <FaBars className="text-gray-700 text-xl" />
-        </div>
+        </div>    
         <div onClick={toggleFullscreen} className="cursor-pointer">
           <FaExpand className="text-gray-700 text-xl" />
         </div>

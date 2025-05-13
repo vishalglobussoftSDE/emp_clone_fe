@@ -6,6 +6,7 @@ import NotificationsPage from './pages/NotificationsPage';
 import TimeClaimPage from './pages/TimeClaimPage';
 import MainLayoutHRMS from './components/MainLayoutHRMS';
 import MainButton from './components/Button/MainButton';
+import Attendence from './pages/HRMSPages/Attendence';
 
 const App = () => {
   return (
@@ -40,7 +41,7 @@ const App = () => {
             path="/hrms/attendence"
             element={
               <MainLayoutHRMS>
-                <MainButton/>
+                <Attendence/>
               </MainLayoutHRMS>
             }
           />
