@@ -2,7 +2,11 @@ import React from 'react'
 
 const TimeClaimPage = () => {
   return (
-    <div>TimeClaimPage</div>
+   <div>
+        <div className="wrapper">
+            <div>Home /Time Claim</div>
+        </div>
+    </div>
   )
 }
 

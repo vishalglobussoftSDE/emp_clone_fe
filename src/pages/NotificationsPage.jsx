@@ -2,7 +2,11 @@ import React from 'react'
 
 const NotificationsPage = () => {
   return (
-    <div>NotificationsPage</div>
+   <div>
+        <div className="wrapper">
+            <div>Home /  Alerts Notifications</div>
+        </div>
+    </div>
   )
 }
 

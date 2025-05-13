@@ -1,10 +1,14 @@
 import { FaInfoCircle, FaBars, FaExpand, FaUser, FaDesktop } from 'react-icons/fa';
 import { useState } from 'react';
 import { useSidebar } from '../../context/sidebarContext'; // Use this context for sidebar toggle
+import { redirect } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+
 
 const MainNavbar = () => {
-  const { toggleSidebar } = useSidebar(); // Get toggle function from context
+  const { toggleSidebar } = useSidebar();
   const [isFullscreen, setIsFullscreen] = useState(false);
+  const navigate = useNavigate(); // ✅ useNavigate for programmatic navigation
 
   const toggleFullscreen = () => {
     if (!isFullscreen) {
@@ -15,15 +19,17 @@ const MainNavbar = () => {
     setIsFullscreen(!isFullscreen);
   };
 
+  const handleHRMSClick = () => {
+   window.open('/hrms/attendence', '_blank'); // ✅ navigate to the route
+  };
+
   return (
     <div className="flex justify-between items-center p-4 bg-white border-b border-gray-200 shadow-sm">
       {/* Left section */}
       <div className="flex gap-6 items-center text-gray-700 font-medium">
-        {/* Toggle Sidebar */}
         <div onClick={toggleSidebar} className="cursor-pointer">
           <FaBars className="text-gray-700 text-xl" />
         </div>
-        {/* Toggle Fullscreen */}
         <div onClick={toggleFullscreen} className="cursor-pointer">
           <FaExpand className="text-gray-700 text-xl" />
         </div>
@@ -38,10 +44,16 @@ const MainNavbar = () => {
         <div>
           <FaDesktop className="text-blue-500 text-lg" />
         </div>
-        <div>HRMS</div>
+        <div>
+          {/* ✅ Button that navigates on click */}
+          <button
+            onClick={handleHRMSClick}
+            className="bg-purple-500 text-white px-3 py-1 rounded"
+          >
+            HRMS
+          </button>
+        </div>
         <div>Welcome</div>
-
-        {/* Profile */}
         <div className="text-right flex items-center gap-2">
           <div className="font-semibold">Vishal</div>
           <FaUser className="text-gray-700 text-lg" />
