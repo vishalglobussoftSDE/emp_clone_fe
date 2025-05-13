@@ -11,15 +11,16 @@ const getISTTime = () => {
     hour12: false,
   }).format(new Date());
 };
-
 const generateMonthDates = (year, month) => {
-  const daysInMonth = new Date(year, month + 1, 0).getDate();
+  const daysInMonth = new Date(year, month + 1, 0).getDate(); // e.g. May = 31
   const dates = [];
 
   for (let i = 1; i <= daysInMonth; i++) {
-    const date = new Date(year, month, i);
+    const date = new Date(Date.UTC(year, month, i)); // use UTC to avoid timezone shifts
     const formatted = date.toISOString().split("T")[0];
-    const isWeekend = date.getDay() === 0 || date.getDay() === 6;
+
+    const dayOfWeek = date.getUTCDay(); // get correct day in UTC
+    const isWeekend = dayOfWeek === 0 || dayOfWeek === 6;
 
     dates.push({
       date: formatted,
@@ -32,7 +33,6 @@ const generateMonthDates = (year, month) => {
 
   return dates;
 };
-
 const formatTime = (date) => {
   return date.toTimeString().split(" ")[0];
 };
